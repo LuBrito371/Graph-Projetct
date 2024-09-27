@@ -29,7 +29,6 @@ public class Grafo {
         inicio.adicionarArestaSaida(aresta);
         fim.adicionarArestaEntrada(aresta);
         this.arestas.add(aresta);
-        System.out.println("Aresta adicionada");
     }
 
     public Vertice getVertice(String nome) {
@@ -44,7 +43,7 @@ public class Grafo {
         return vertice;
     }
 
-    public void sugerirConexoes(String nome) {
+    public int sugerirConexoes(String nome) {
         Vertice usuario = this.getVertice(nome);
         ArrayList<String> esportesDoUsuario = usuario.getEsportes();
 
@@ -62,11 +61,13 @@ public class Grafo {
 
         if (sugeridos.isEmpty()) {
             System.out.println("Nenhuma sugestão de amizade encontrada.");
+            return 0;
         } else {
             System.out.println("Sugestões de amizade para " + usuario.getNome() + ":");
             for (int i = 0; i < sugeridos.size(); i++) {
                 System.out.println(sugeridos.get(i).getNome());
             }
+            return 1;
         }
     }
 

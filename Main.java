@@ -92,7 +92,14 @@ public class Main {
                     rede.listarEsportes(usuarioNome);
                 }
                 if (option2 == 4) {
-                    rede.sugerirConexoes(usuarioNome);
+                    int encontrado = rede.sugerirConexoes(usuarioNome);
+                    if (encontrado == 1) {
+                        System.out.println("Qual usuário você gostaria de fazer amizade? Digite: ");
+                        String usuarioAConectar = sc.nextLine();
+                        rede.adicionarAresta(usuarioNome, usuarioAConectar);
+                        System.out.println("Você e "+usuarioAConectar+" agora são amigos\n");
+                    }
+                   
                 }
                 if (option2 == 5) {
                     System.out.println("Qual usuário você gostaria de desfazer conexão? Digite: ");
