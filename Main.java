@@ -5,29 +5,16 @@ public class Main {
         Grafo rede = new Grafo();
         Scanner sc = new Scanner(System.in);
 
+        Repository repository = new Repository(); 
+        
+        for (int i = 0; i < repository.getUsuarios().size(); i++) {
+            rede.adicionarVertice(repository.getUsuarios().get(i).getNome());
+        }
+
         boolean usuarioLogado = false;
         String usuarioNome = "";
 
-        rede.adicionarVertice("Admin");
-
-        rede.adicionarVertice("Nina");
-        rede.adicionarVertice("Nancy");
-        rede.adicionarVertice("Ned");
-        rede.adicionarVertice("Nico");
-        rede.adicionarVertice("Nilce");
-
-        rede.adicionarEsporte("Nina", "Volei");
-        rede.adicionarEsporte("Nancy", "Natação");
-        rede.adicionarEsporte("Ned", "Golf");
-        rede.adicionarEsporte("Nico", "Esgrima");
-        rede.adicionarEsporte("Nilce", "Volei");
-
-        rede.adicionarAresta("Nina", "Nancy");
-        rede.adicionarAresta("Nancy", "Nico");
-        rede.adicionarAresta("Nico", "Ned");
-        rede.adicionarAresta("Nina", "Ned");
-        rede.adicionarAresta("Nilce", "Nina");
-        rede.adicionarAresta("Nilce", "Nancy");
+        
 
         while (true) {
             if (!usuarioLogado) {
@@ -92,7 +79,7 @@ public class Main {
                     System.out.println("==== Seus amigos ====");
                     rede.getArestasLigadasAoVertice(usuarioNome);
                 }
-                if (option2 == 2) { 
+                if (option2 == 2) {
                     System.out.println("==== Seus esportes ====");
                     rede.listarEsportes(usuarioNome);
                 }
@@ -115,12 +102,13 @@ public class Main {
                 if (option2 == 99) {
                     rede.visualizarGrafo();
                 }
+                if (option2 == 0) {
+                    usuarioLogado = false;
+                    usuarioNome = " ";
+                }
 
             }
         }
 
-        // rede.sugerirConexoes("Nina");
-
-        // rede.visualizarGrafo();
     }
 }
